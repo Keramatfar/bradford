@@ -13,3 +13,4 @@ for i in range(10000000):
         print(loss)
         loss = loss_temp   
         i1, i2 = c1, c2
+ print(i1, i2), #These are the points which you break your list at them.
