@@ -1,6 +1,6 @@
 # data[0] is a column of a dataframe includes sorted values such as [9, 5, 2, 1]
 p = data[0].to_numpy()
-loss = 8000000000
+loss = 10**8
 i1, i2 = 0, 0
 for i in range(10000000):
     c1 = np.random.randint(0, len(data)-2, 1)[0]
