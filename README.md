@@ -1,2 +1,2 @@
 # bradford
-Finding three parts of a sorted list by equal sum.
+Finding three parts of a sorted list by almost equal sum.
