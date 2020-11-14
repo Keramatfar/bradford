@@ -1,16 +1,19 @@
-# data[0] is a column of a dataframe includes sorted values such as [9, 5, 2, 1]
+import pandas as pd
+import numpy as np
+data = pd.read_excel('all.xlsx', header = None)
+
 p = data[0].to_numpy()
 loss = 10**8
 i1, i2 = 0, 0
-for i in range(10000000):
-    c1 = np.random.randint(0, len(data)-2, 1)[0]
-    c2 = np.random.randint(c1+1, len(data), 1)[0]
-    p1 = np.sum(p[:c1])
-    p2 = np.sum(p[c1:c2])
-    p3 = np.sum(p[c2:])
-    loss_temp = abs(p3-p2)+abs(p2-p1)
-    if loss_temp<=loss:
-        print(loss)
-        loss = loss_temp   
-        i1, i2 = c1, c2
- print(i1, i2), #These are the points which you break your list at them.
+s1, s2, s3 = 0, 0, 0
+for c1 in range(len(data)-1):
+    for c2 in range(c1, len(data)):
+        p1 = np.sum(p[:c1])
+        p2 = np.sum(p[c1:c2])
+        p3 = np.sum(p[c2:])
+        loss_temp = abs(p3-p2)+abs(p2-p1)
+        if loss_temp<=loss:
+            loss = loss_temp   
+            i1, i2 = c1, c2
+            s1, s2, s3 = p1, p2, p3
+print(i1, i2, loss, s1, s2, s3) #These are the points which you break your list at them.
